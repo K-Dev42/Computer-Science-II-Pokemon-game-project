@@ -18,14 +18,10 @@ public class App {
         // Fight 1 
         while (Rayquaza.getHP() != 0 && Kyurem.getHP() != 0) {
             Kyurem.takeDamage(Rayquaza.getAtk());
-            System.out.println(Rayquaza.getName() + " attack " + Kyurem.getName() + " for " + Rayquaza.getAtk() + " hp! ");
-            Kyurem.printStats();
             if (Kyurem.getHP() == 0) {
                 break;
             }
             Rayquaza.takeDamage(Kyurem.getAtk());
-            System.out.println(Kyurem.getName() + " attack " + Rayquaza.getName() + " for " + Kyurem.getAtk() + " hp! ");
-            Rayquaza.printStats();
             if (Rayquaza.getHP() == 0) {
                 break;
             }
@@ -37,10 +33,9 @@ public class App {
             System.out.println("The winner is " + Rayquaza.getName() + " with " + Rayquaza.getHP() + " hp left");
         }
 
-
+        
+        // User pokemon's opponent
         Pokemon Groudon = new Pokemon("Groudon",100,70, 0.5);
-
-        Kyurem.printStats();
 
 
         // User input portion
@@ -67,14 +62,10 @@ public class App {
         // Fight 2
         while (userPkm.getHP() != 0 && Groudon.getHP() != 0) {
             Groudon.takeDamage(userPkm.getAtk());
-            System.out.println(userPkm.getName() + " attack " + Groudon.getName() + " for " + userPkm.getAtk() + " hp! ");
-            Groudon.printStats();
             if (Groudon.getHP() == 0) {
                 break;
             }
             userPkm.takeDamage(Groudon.getAtk());
-            System.out.println(Groudon.getName() + " attack " + userPkm.getName() + " for " + Groudon.getAtk() + " hp! ");
-            userPkm.printStats();
             if (userPkm.getHP() == 0) {
                 break;
             }
@@ -87,8 +78,11 @@ public class App {
             System.out.println("The winner is " + userPkm.getName() + " with " + userPkm.getHP() + " hp left");
         }
 
-
-
+        // Check for bug code
+        System.out.println(userPkm.getAtk());
+        System.out.println(userPkm.getHP());
+        System.out.println(userPkm.getEva());
+        
 
     }
 }
