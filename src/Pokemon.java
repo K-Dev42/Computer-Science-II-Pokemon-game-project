@@ -1,8 +1,13 @@
 public class Pokemon {
-    private String name;
-    private int hp;
-    private int attack; 
-    private double eva;
+    public String name;
+    public int hp;
+    public int attack; 
+    public double eva;
+
+
+    public Pokemon(){
+
+    }
 
 
     public Pokemon(String name, int hp, int attack, double eva){

@@ -14,6 +14,7 @@ public class App {
         System.out.println(Rayquaza.getName() + " and " + Kyurem.getName() + " are fighting today!");
         System.out.println(Rayquaza.getName() + ": " + Rayquaza.getHP() + " hp");
         System.out.println(Kyurem.getName() + ": " + Kyurem.getHP() + " hp");
+        System.out.println("--------------------------------------------------------");
 
         // Fight 1 
         while (Rayquaza.getHP() != 0 && Kyurem.getHP() != 0) {
@@ -29,8 +30,10 @@ public class App {
 
         if (Rayquaza.getHP() == 0) {
             System.out.println("The winner is " + Kyurem.getName() + " with " + Kyurem.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
         } else {
             System.out.println("The winner is " + Rayquaza.getName() + " with " + Rayquaza.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
         }
 
         
@@ -74,15 +77,49 @@ public class App {
 
         if (userPkm.getHP() == 0) {
             System.out.println("The winner is " + Groudon.getName() + " with " + Groudon.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
         } else {
             System.out.println("The winner is " + userPkm.getName() + " with " + userPkm.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
         }
 
         // Check for bug code
         System.out.println(userPkm.getAtk());
         System.out.println(userPkm.getHP());
         System.out.println(userPkm.getEva());
-        
+        System.out.println("--------------------------------------------------------");
 
+
+        WaterPokemon Kyogre = new WaterPokemon("Kyogre",200, 30, 0.3);
+        Pokemon Pigey = new Pokemon("Pigey",60,50,0.99);
+
+    
+        while (Kyogre.getHP() != 0 && Pigey.getHP() != 0) {
+            if (Kyogre.usedDiveInPreviousTurn == false){
+            Kyogre.useDive();
+            } else {
+                Kyogre.usedDiveInPreviousTurn = false;
+                Pigey.takeDamage(Kyogre.getAtk());
+                if (Pigey.getHP() == 0) {
+                    break;
+                }
+            }
+            Kyogre.takeDamageAsWaterPokemon(Pigey.getAtk());
+            if (Kyogre.getHP() == 0) {
+                break;
+            }
+        }
+
+        if (Kyogre.getHP() == 0) {
+            System.out.println("The winner is " + Pigey.getName() + " with " + Pigey.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
+        } else {
+            System.out.println("The winner is " + Kyogre.getName() + " with " + Kyogre.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
+        }
+
+
+
+        
     }
 }
