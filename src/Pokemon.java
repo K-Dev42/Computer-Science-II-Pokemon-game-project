@@ -32,6 +32,18 @@ public class Pokemon {
         }
     }
 
+    // This is an overload method for creating Pikachu
+    public Pokemon(String name){
+        if (name == "p"){
+            this.name = "Pikachu";
+            this.hp = 55;
+            this.attack = 10;
+            this.eva = 0.25;
+        } else {
+
+        }
+    }
+
 
     public void takeDamage(int damage){
         if (Math.random() < this.eva){
@@ -52,6 +64,11 @@ public class Pokemon {
     }
 
 
+    public void attacks(Pokemon attackedPokemon){
+        attackedPokemon.takeDamage(this.attack);
+    }
+
+
     public int getHP(){ // This method is for getting the pokemon's hp stat in the main function
         return this.hp;
     }
@@ -67,4 +84,12 @@ public class Pokemon {
     public double getEva(){ // This method is for getting the pokemon's evasion stat in the main function
         return this.eva;
     }
+
+
+    public void sayName(){
+        System.out.println("I am " + this.name + "!");
+    }
+
+
+
 }

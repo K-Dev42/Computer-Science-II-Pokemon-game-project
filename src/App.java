@@ -18,11 +18,11 @@ public class App {
 
         // Fight 1 
         while (Rayquaza.getHP() != 0 && Kyurem.getHP() != 0) {
-            Kyurem.takeDamage(Rayquaza.getAtk());
+            Rayquaza.attacks(Kyurem);;
             if (Kyurem.getHP() == 0) {
                 break;
             }
-            Rayquaza.takeDamage(Kyurem.getAtk());
+            Kyurem.attacks(Rayquaza);;
             if (Rayquaza.getHP() == 0) {
                 break;
             }
@@ -64,11 +64,11 @@ public class App {
 
         // Fight 2
         while (userPkm.getHP() != 0 && Groudon.getHP() != 0) {
-            Groudon.takeDamage(userPkm.getAtk());
+            userPkm.attacks(Groudon);
             if (Groudon.getHP() == 0) {
                 break;
             }
-            userPkm.takeDamage(Groudon.getAtk());
+            Groudon.attacks(userPkm);
             if (userPkm.getHP() == 0) {
                 break;
             }
@@ -95,16 +95,13 @@ public class App {
 
     
         while (Kyogre.getHP() != 0 && Pigey.getHP() != 0) {
-            if (Kyogre.usedDiveInPreviousTurn == false){
-            Kyogre.useDive();
-            } else {
-                Kyogre.usedDiveInPreviousTurn = false;
-                Pigey.takeDamage(Kyogre.getAtk());
-                if (Pigey.getHP() == 0) {
-                    break;
-                }
+            Kyogre.attacks(Pigey);
+            if (Pigey.getHP() == 0) {
+                break;
             }
-            Kyogre.takeDamageAsWaterPokemon(Pigey.getAtk());
+
+
+            Pigey.attacks(Kyogre);
             if (Kyogre.getHP() == 0) {
                 break;
             }
@@ -118,8 +115,19 @@ public class App {
             System.out.println("--------------------------------------------------------");
         }
 
+        Pokemon Pikachu = new Pokemon("p");
 
+        System.out.println(Pikachu.getEva());
+
+        Pikachu.sayName();
+
+        Kyogre.sayName();
 
         
+
+
+
+
+
     }
 }

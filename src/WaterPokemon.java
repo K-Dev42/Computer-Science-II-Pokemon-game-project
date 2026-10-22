@@ -1,5 +1,5 @@
 public class WaterPokemon extends Pokemon {
-    public boolean usedDiveInPreviousTurn;
+    protected boolean usedDiveInPreviousTurn;
 
 
 
@@ -32,7 +32,9 @@ public class WaterPokemon extends Pokemon {
         System.out.println(this.name + " used Dive!");
     }
 
-    public void takeDamageAsWaterPokemon(int damage){
+
+    @Override
+    public void takeDamage(int damage){
         if (this.usedDiveInPreviousTurn == true){
             System.out.println(this.name + " is underwater so it does not take any damage!");
         } else {
@@ -52,6 +54,26 @@ public class WaterPokemon extends Pokemon {
                 }
             }
         }
+    }
+
+
+    @Override
+    public void sayName(){
+        System.out.println("I am " + this.name + "! I am a water Pokemon!");
+    }
+
+    @Override
+    public void attacks(Pokemon attackedPokemon){
+        if (usedDiveInPreviousTurn == false){
+            useDive();
+        } else {
+            this.usedDiveInPreviousTurn = false;
+            attackedPokemon.takeDamage(this.attack);
+        }
+
+
+
+
     }
 
 
