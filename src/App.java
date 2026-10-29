@@ -124,7 +124,11 @@ public class App {
         Kyogre.sayName();
 
         
+        Potion potion1 = new Potion("Max potion", 500, 100);
 
+        potion1.use(Kyurem);
+        System.out.println(Kyurem.getHP());
+        
 
 
 
