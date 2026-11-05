@@ -1,6 +1,7 @@
 public class Pokemon {
     protected String name;
     protected int hp;
+    protected int maxHP;
     protected int attack; 
     protected double eva;
 
@@ -13,6 +14,7 @@ public class Pokemon {
     public Pokemon(String name, int hp, int attack, double eva){
         this.name = name;
         this.hp = hp;
+        this.maxHP = hp;
         this.attack = attack;
         this.eva = eva; 
 
@@ -66,6 +68,13 @@ public class Pokemon {
 
     public void attacks(Pokemon attackedPokemon){
         attackedPokemon.takeDamage(this.attack);
+    }
+
+    public void heal(int amount){
+        this.hp += amount;
+        if (this.hp > this.maxHP){
+            this.hp = this.maxHP;
+        }
     }
 
 

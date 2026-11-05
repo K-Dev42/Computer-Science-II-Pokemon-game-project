@@ -90,22 +90,39 @@ public class App {
         System.out.println("--------------------------------------------------------");
 
 
-        WaterPokemon Kyogre = new WaterPokemon("Kyogre",200, 30, 0.3);
-        Pokemon Pigey = new Pokemon("Pigey",60,50,0.99);
+        WaterPokemon Kyogre = new WaterPokemon("Kyogre",200, 45, 0.3);
+        Pokemon Pigey = new Pokemon("Pigey",60,60,0.1);
+
+        Potion potion1 = new Potion("Potion", 300, 20);
+        Potion potion2 = new Potion("Super Potion", 700, 50);
 
     
         while (Kyogre.getHP() != 0 && Pigey.getHP() != 0) {
+            if (Kyogre.getHP() < 20 && potion1.getHasBeenUsed() == false){
+                Kyogre.heal(potion1.getHealingValue());
+                potion1.setUsageToTrue();
+                System.out.println("Kyogre used a " + potion1.getName()+  " and heal " + potion1.getHealingValue() + " hp!");
+            } else {
             Kyogre.attacks(Pigey);
             if (Pigey.getHP() == 0) {
                 break;
             }
+        }
+        
 
-
+            if (Pigey.getHP() < 20 && potion2.getHasBeenUsed() == false){
+                Pigey.heal(potion2.getHealingValue());
+                potion2.setUsageToTrue();
+                System.out.println("Pigey used a " + potion2.getName() + " and heal " + potion2.getHealingValue() + " hp!");
+            } else {
             Pigey.attacks(Kyogre);
             if (Kyogre.getHP() == 0) {
                 break;
             }
         }
+    }
+        
+    
 
         if (Kyogre.getHP() == 0) {
             System.out.println("The winner is " + Pigey.getName() + " with " + Pigey.getHP() + " hp left");
@@ -124,10 +141,8 @@ public class App {
         Kyogre.sayName();
 
         
-        Potion potion1 = new Potion("Max potion", 500, 100);
+  
 
-        potion1.use(Kyurem);
-        System.out.println(Kyurem.getHP());
         
 
 
