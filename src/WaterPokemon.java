@@ -38,10 +38,6 @@ public class WaterPokemon extends Pokemon {
             this.usedDiveInPreviousTurn = false;
             attackedPokemon.takeDamage(this.attack);
         }
-
-
-
-
     }
 
 

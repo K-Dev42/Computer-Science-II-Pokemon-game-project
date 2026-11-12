@@ -142,10 +142,29 @@ public class App {
 
         
   
+        LegendaryWaterPokemon Palkia = new LegendaryWaterPokemon("Palkia", 200, 200, 0.1);
+        Pokemon Onix = new Pokemon("Onix", 500, 60,0.5);
 
-        
 
+        while (Palkia.getHP() != 0 && Onix.getHP() != 0){
+            Palkia.attacks(Onix);
+            if (Onix.getHP() == 0){
+                break;
+            }
 
+            Onix.attacks(Palkia);
+            if (Palkia.getHP() == 0){
+                break;
+            }
+        }
+
+        if (Palkia.getHP() == 0) {
+            System.out.println("The winner is " + Onix.getName() + " with " + Onix.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
+        } else {
+            System.out.println("The winner is " + Palkia.getName() + " with " + Palkia.getHP() + " hp left");
+            System.out.println("--------------------------------------------------------");
+        }
 
 
     }
