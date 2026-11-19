@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import javax.swing.*;
 public class App {
     public static void main(String[] args) throws Exception {
         
@@ -9,7 +9,7 @@ public class App {
         // New pokemon 2 
         Pokemon Kyurem = new Pokemon("Kyurem",150,10, 0.5);
 
-
+         
         // Anouncement 
         System.out.println(Rayquaza.getName() + " and " + Kyurem.getName() + " are fighting today!");
         System.out.println(Rayquaza.getName() + ": " + Rayquaza.getHP() + " hp");
@@ -146,17 +146,56 @@ public class App {
         Pokemon Onix = new Pokemon("Onix", 500, 60,0.5);
 
 
+        JFrame frame = new JFrame("Pokemon Game");
+        frame.setSize(800, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel palkiaLabel = new JLabel("Palkia", JLabel.CENTER);
+        JLabel onixLabel = new JLabel("Onix", JLabel.CENTER);
+
+        JLabel palkiaHP = new JLabel(String.valueOf(Palkia.getHP()), JLabel.CENTER);
+        JLabel onixHP = new JLabel(String.valueOf(Onix.getHP()), JLabel.CENTER);
+
+
+        palkiaLabel.setBounds(150, 70, 100, 30);
+        onixLabel.setBounds(500, 70, 100, 30);
+
+        palkiaHP.setBounds(150, 85, 100, 30);
+        onixHP.setBounds(500, 85, 100, 30);
+
+
+        frame.add(onixLabel);
+        frame.add(palkiaLabel);
+        frame.add(palkiaHP);
+        frame.add(onixHP);
+        frame.setLayout(null);
+        frame.setVisible(true);
+
+
+
+        Scanner s1 = new Scanner(System.in);
+
+
         while (Palkia.getHP() != 0 && Onix.getHP() != 0){
+
+            String input = s1.nextLine();
+
             Palkia.attacks(Onix);
+            onixHP.setText(String.valueOf(Onix.getHP()));
             if (Onix.getHP() == 0){
                 break;
             }
 
             Onix.attacks(Palkia);
+            palkiaHP.setText(String.valueOf(Palkia.getHP()));
             if (Palkia.getHP() == 0){
                 break;
             }
+
         }
+
+        s1.close();
+
 
         if (Palkia.getHP() == 0) {
             System.out.println("The winner is " + Onix.getName() + " with " + Onix.getHP() + " hp left");
@@ -165,6 +204,9 @@ public class App {
             System.out.println("The winner is " + Palkia.getName() + " with " + Palkia.getHP() + " hp left");
             System.out.println("--------------------------------------------------------");
         }
+        
+
+
 
 
     }
